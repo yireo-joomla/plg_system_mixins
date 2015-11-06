@@ -35,7 +35,7 @@ class PlgSystemMixins extends PlgSystemMixinsAbstract
 	 */
 	public function onAfterRender()
 	{
-		if ($this->isAjaxRequest() && $this->isHtmlFrontend() == false)
+		if ($this->isAjaxRequest() || $this->isHtmlFrontend() == false)
 		{
 			return false;
 		}
@@ -46,7 +46,7 @@ class PlgSystemMixins extends PlgSystemMixinsAbstract
 			foreach ($tags as $tag)
 			{
 				// var_dump($tag);
-				$tagHtml = '<h1>Tag: ' . var_export($tag['arguments'], true) . ' --></h1>';
+				$tagHtml = '<strong>Mixins Plugin: ' . var_export($tag['arguments'], true) . '</strong>';
 
 				$this->replaceBodyTags($tag['original'], $tagHtml);
 			}
